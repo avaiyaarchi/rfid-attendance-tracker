@@ -1,0 +1,47 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: check the requesting user is authenticated
+    function isAuth() {
+      return request.auth != null;
+    }
+
+    // Helper: check the requesting user has admin role (stored in Firestore)
+    function isAdmin() {
+      return isAuth() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // ── Students ──────────────────────────────────────────────────────────────
+    // Authenticated teachers can read all students.
+    // Only admins can create/update/delete.
+    match /students/{studentId} {
+      allow read: if isAuth();
+      allow write: if isAdmin();
+    }
+
+    // ── Attendance Logs ───────────────────────────────────────────────────────
+    // Authenticated users can read.
+    // Python middleware (server-side Admin SDK) bypasses these rules automatically,
+    // so we allow write for authenticated users too (manual override fallback).
+    match /attendance_logs/{logId} {
+      allow read: if isAuth();
+      allow create: if isAuth();
+      allow update, delete: if isAdmin();
+    }
+
+    // ── Classes ───────────────────────────────────────────────────────────────
+    match /classes/{classId} {
+      allow read: if isAuth();
+      allow write: if isAdmin();
+    }
+
+    // ── Users (role store) ────────────────────────────────────────────────────
+    match /users/{userId} {
+      allow read: if isAuth() && request.auth.uid == userId;
+      allow write: if isAdmin();
+    }
+  }
+}

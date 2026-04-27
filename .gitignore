@@ -27,6 +27,7 @@
 /packages/flutter/coverage/
 version
 analysis_benchmark.json
+backend/serviceAccountKey.json
 
 # packages file containing multi-root paths
 .packages.generated

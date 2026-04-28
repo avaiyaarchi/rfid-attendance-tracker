@@ -41,7 +41,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyB6vA2p0N4pMhIKknmJX_p3w_NIrYLDr5A',
+    apiKey: 'AIzaSyC9_7-aaqYrTnRcGNR2qXITYHpfdyz04b0',
     appId: '1:705410372549:web:ad0948e68f8e6e14aaf1ac',
     messagingSenderId: '705410372549',
     projectId: 'smartattendance-6f84f',
@@ -52,7 +52,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAqUBfBl4WF4XW8NCpuHqT4Mm852FvScdU',
+    apiKey: 'AIzaSyC9_7-aaqYrTnRcGNR2qXITYHpfdyz04b0',
     appId: '1:705410372549:android:690166a42682f212aaf1ac',
     messagingSenderId: '705410372549',
     projectId: 'smartattendance-6f84f',
@@ -61,7 +61,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCI_1OgAK_Ifp0Tln1aYR-uHbc0AvayfLc',
+    apiKey: 'AIzaSyC9_7-aaqYrTnRcGNR2qXITYHpfdyz04b0',
     appId: '1:705410372549:ios:3cfe4fe7605c86edaaf1ac',
     messagingSenderId: '705410372549',
     projectId: 'smartattendance-6f84f',
@@ -71,7 +71,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCI_1OgAK_Ifp0Tln1aYR-uHbc0AvayfLc',
+    apiKey: 'AIzaSyC9_7-aaqYrTnRcGNR2qXITYHpfdyz04b0',
     appId: '1:705410372549:ios:3cfe4fe7605c86edaaf1ac',
     messagingSenderId: '705410372549',
     projectId: 'smartattendance-6f84f',
@@ -81,7 +81,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyB6vA2p0N4pMhIKknmJX_p3w_NIrYLDr5A',
+    apiKey: 'AIzaSyC9_7-aaqYrTnRcGNR2qXITYHpfdyz04b0',
     appId: '1:705410372549:web:47b447a8ad566bafaaf1ac',
     messagingSenderId: '705410372549',
     projectId: 'smartattendance-6f84f',

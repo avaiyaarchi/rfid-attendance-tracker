@@ -218,7 +218,7 @@ class DashboardPage extends StatelessWidget {
                     stream: FirebaseFirestore.instance
                         .collection('attendance_logs')
                         .orderBy('timestamp', descending: true)
-                        .limit(5)
+                        .limit(20)
                         .snapshots(),
                     builder: (context, snap) {
                       if (!snap.hasData) return const Center(child: CircularProgressIndicator());

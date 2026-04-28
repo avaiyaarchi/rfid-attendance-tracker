@@ -60,6 +60,7 @@ class DashboardPage extends StatelessWidget {
                     stream: FirebaseFirestore.instance
                         .collection('attendance_logs')
                         .where('date', isEqualTo: today)
+                        .where('valid', isEqualTo: true)
                         .snapshots(),
                     builder: (context, snap) {
                       final presentCount = snap.data?.docs.length ?? 0;

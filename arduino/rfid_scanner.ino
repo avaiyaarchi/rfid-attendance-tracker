@@ -16,12 +16,15 @@ int mode = 0;
 #define BTN2 3
 
 String getStudent(String uid) {
-  if (uid == "04A1B2C3") return "230760107001";
-  else if (uid == "04A1B2C4") return "230760107002";
+  if (uid == "52AD5C5C") return "240763107004";
+  else if (uid == "F107F005") return "230760107052";
   else return "Unknown";
 }
 
 String lastTime = "";
+String CurrentTime = "";
+String CurrentDay = "";
+
 
 // RTC
 RTC_DS1307 rtc;
@@ -85,15 +88,18 @@ if (mode == 0) {
 }
 
 uid.toUpperCase();
-
-  uid.toUpperCase();
   String student = getStudent(uid);
 
   Serial.println(uid);
 
   lcd.clear();
-    
-  // Avoid duplicate scan
+
+  if (student == "Unknown") {
+    lcd.print("Invalid User");
+    delay(2000);
+    return;
+  }
+
   if (student == lastStudent) {
     lcd.print("Already Marked");
     delay(2000);
@@ -120,7 +126,7 @@ uid.toUpperCase();
   if (now.month() < 10) mon = "0" + mon;
   if (now.year() < 10) y = "0" + y;
 
-  lastTime = h + "." + m + "." + s;
+  lastTime = h + ":" + m + ":" + s;
 
   // Display Attendance
   lcd.clear();
@@ -128,20 +134,12 @@ uid.toUpperCase();
   lcd.print(student);
 
   lcd.setCursor(0, 1);
-  lcd.print(h);
-  lcd.print(".");
-  lcd.print(m);
-  lcd.print("  ");
-  lcd.print(d);
-  lcd.print(".");
-  lcd.print(mon);
-  lcd.print(".");
-  lcd.print(y);
+  lcd.print("time: ");
+  lcd.print(lastTime);
 
   delay(5000);
   lcd.clear();
 }
-
 
 // MODE 1 → Show Last Attendance
 else if (mode == 1) {
@@ -153,6 +151,7 @@ else if (mode == 1) {
     lcd.clear();
     lcd.print(lastStudent);
     lcd.setCursor(0, 1);
+    lcd.print("time: ");
     lcd.print(lastTime);
     delay(3000);
     lcd.clear();
@@ -183,18 +182,16 @@ else if (mode == 2) {
     if (now.month() < 10) mon = "0" + mon;
     if (now.year() < 10) y = "0" + y;
 
+    CurrentTime = h + ":" + m + ":" + s;
+    CurrentDay = d + "/" + mon + "/" + y;
 
     lcd.clear();
-    lcd.print(h);
-    lcd.print(".");
-    lcd.print(m);
+    lcd.print("Time: ");
+    lcd.print(CurrentTime);
 
     lcd.setCursor(0, 1);
-    lcd.print(d);
-    lcd.print(".");
-    lcd.print(mon);
-    lcd.print(".");
-    lcd.print(y);
+    lcd.print("Date: ");
+    lcd.print(CurrentDay);
     delay(3000);
     lcd.clear();
   }
